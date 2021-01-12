@@ -27,10 +27,14 @@ public class AuthorService extends DialogflowApp {
 	private Logger logger=LoggerFactory.getLogger(AuthorService.class);
 		
 	@ForIntent("Default Welcome Intent")
+	//@ForIntent("actions.intent.OPTION")
 	public ActionResponse findall(ActionRequest request) {
 		logger.info(request.toString());
+		System.out.println("Intent Name-->"+ request.getSelectedOption());
+		String li = request.getSelectedOption();
+		return buildResponse(request, request.getIntent());
 		//List<Author> authorlist=authorRepository.findAll();
-		String response="Success";
+		//String response="Success";
 		/*
 		 *  System.out.println("Intent Name-->"+ intentName);
 		 * intentName = intentName.replaceAll("\\s", "");
@@ -48,12 +52,67 @@ public class AuthorService extends DialogflowApp {
 		 * response.append(AuthorUtil.getRandomselection());
 		 */
 		 
-		ResponseBuilder responseBuilder=getResponseBuilder(request).add(response.toString());
-		ActionResponse actionResponse=responseBuilder.build();
-		return actionResponse;
+		
 	
 		
 		
+	}
+	@ForIntent("Use_Case_One") 
+	public ActionResponse useCaseOne(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+
+	@ForIntent("nfl-sunday-ticket")
+	public ActionResponse nflSundayTicket(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Games")
+	public ActionResponse games(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Monthly")
+	public ActionResponse monthly(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Nine")
+	public ActionResponse nine(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Nine-No")
+	public ActionResponse nineNo(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Nine-Yes")
+	public ActionResponse nineYes(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Single")
+	public ActionResponse single(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Single-Yes")
+	public ActionResponse singleYes(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	@ForIntent("Passcode")
+	public ActionResponse Passcode(ActionRequest request) {
+		logger.info(request.toString());		
+		return buildResponse(request, request.getIntent());
+	}
+	public ActionResponse buildResponse(ActionRequest request, String intent) {
+		String response = intent;
+		ResponseBuilder responseBuilder=getResponseBuilder(request).add(response.toString());
+		ActionResponse actionResponse=responseBuilder.build();
+		return actionResponse;	
 	}
 
 }
